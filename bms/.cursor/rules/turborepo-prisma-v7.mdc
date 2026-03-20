@@ -1,0 +1,95 @@
+---
+description: Guidelines for writing Turborepo + Prisma Postgres apps (Prisma ORM v7)
+alwaysApply: false
+---
+
+# Bootstrap Turborepo with Prisma Postgres (Prisma v7)
+
+## Core rules
+
+1. Use a shared Prisma package for the monorepo database layer.
+2. Use Prisma v7 generator provider `prisma-client`.
+3. Always define a non-empty custom generator `output` path.
+4. Import PrismaClient from generated output, never from `@prisma/client` in custom-output setups.
+5. Export a singleton Prisma client from the shared database package.
+6. Load env vars in Prisma config with `import "dotenv/config"`.
+7. Wire Turbo tasks for `db:generate`, `db:migrate`, `db:studio`, and `db:test`.
+8. Include `DATABASE_URL` in Turbo `globalEnv` so hashing is correct.
+9. Wrap app-level DB calls in `try/catch`.
+10. Provide a shared verification script for DB connectivity and CRUD.
+
+## Prisma schema requirements
+
+Use this pattern in schema files:
+
+```prisma
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+```
+
+## Prisma config requirements
+
+Use this pattern in `prisma.config.ts`:
+
+```ts
+import "dotenv/config";
+import { defineConfig, env } from "prisma/config";
+
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  migrations: {
+    path: "prisma/migrations",
+  },
+  datasource: {
+    url: env("DATABASE_URL"),
+  },
+});
+```
+
+## Shared client requirements
+
+Use a singleton in shared DB package:
+
+```ts
+import { PrismaClient } from "./generated/prisma/client.js";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
+
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool as any);
+
+const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
+
+export const prisma =
+  globalForPrisma.prisma ??
+  new PrismaClient({
+    adapter,
+  });
+
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = prisma;
+}
+```
+
+## Turbo requirements
+
+- `dev` and `build` must depend on `^db:generate`.
+- `DATABASE_URL` must be listed in `globalEnv`.
+- Root scripts should proxy db tasks via `turbo run db:*`.
+
+## Verification checklist
+
+- `provider = "prisma-client"` present.
+- Generator `output` present and valid.
+- Shared package exports singleton client.
+- Client imports from generated output path.
+- `prisma.config.ts` loads dotenv and reads `DATABASE_URL`.
+- Turbo db tasks exist and are wired.
+- Shared DB test script exists and disconnects Prisma.
+- App DB calls are wrapped in `try/catch`.

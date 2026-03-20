@@ -1,0 +1,11 @@
+/* Twitter embed styling for equal padding */
+.twitter-tweet {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.twitter-tweet iframe {
+  margin: 0 auto !important;
+  display: block !important;
+}
+
