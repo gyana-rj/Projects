@@ -1,0 +1,127 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage[left=0.4in, right=0.4in, top=0.4in, bottom=0.4in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\input{glyphtounicode}
+\pdfgentounicode=1 % makes ligatures (fi, fl) ATS-readable
+% --- Layout Settings ---
+\pagestyle{empty}
+\raggedright
+\setlength{\tabcolsep}{0in}
+\setlist[itemize]{itemsep=0pt, parsep=0pt, topsep=2pt, partopsep=0pt}
+% --- Custom Section Formatting ---
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+% --- Custom Macros ---
+\newcommand{\resumeItem}[1]{
+  \item\small{#1}
+}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-2pt}
+}
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-2pt}
+}
+\begin{document}
+% --- Header ---
+\begin{center}
+    {\Huge \scshape \textbf{GYANA RANJAN SAHOO}} \\ \vspace{2pt}
+    \small
+    \href{tel:+918480882769}{+91-8480882769} $|$
+    \href{mailto:gyanaranjansahoo174@gmail.com}{gyanaranjansahoo174@gmail.com} $|$
+    \href{https://linkedin.com/in/ranjangyana/}{LinkedIn} $|$
+    \href{https://github.com/gyana-rj}{GitHub} $|$
+    \href{https://devgyana.in}{Portfolio} \\ \vspace{2pt}
+    \href{https://leetcode.com/u/gyana_rn/}{LeetCode} $|$
+    \href{https://www.geeksforgeeks.org/profile/gyana_ranjan_s}{GeeksForGeeks} $|$
+    \href{https://www.naukri.com/code360/profile/gyanarj}{Coding Ninjas}
+\end{center}
+\vspace{2pt}
+% --- Summary ---
+\section{Professional Summary}
+Computer Engineering student and former KFintech intern specializing in scalable full-stack and cross-platform mobile development with \textbf{ReactJS}, \textbf{TypeScript}, and \textbf{React Native}. Strong background in relational database design (\textbf{PostgreSQL}), API architecture, and containerized deployment (\textbf{Docker}) on \textbf{Linux} with \textbf{Prometheus}/\textbf{Grafana} monitoring. Active open-source contributor with strong problem-solving skills.
+% --- Education ---
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \resumeSubheading
+      {Siksha 'O' Anusandhan (ITER)}{Bhubaneswar, India}
+      {Bachelor of Technology in Computer Engineering (CGPA: 7.81)}{Sept 2023 -- Expected July 2027}
+    \resumeSubheading
+      {Prabhujee English Medium School}{Bhubaneswar, India}
+      {Intermediate / 12th (Percentage: 62.08\%)}{2021 -- 2023}
+\end{itemize}
+% --- Experience ---
+\section{Experience}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \resumeSubheading
+      {KFin Technologies Ltd. (KFintech)}{Bhubaneswar, India}
+      {Intern -- Applied Fintech Engineering \& Mutual Fund Technology}{May 2026 -- July 2026}
+      \begin{itemize}
+        \resumeItem{Completed KFintech's campus internship program with \textbf{SOA University} in \textbf{fintech engineering}, \textbf{data systems}, and \textbf{mutual fund technology}.}
+        \resumeItem{Covered \textbf{data management}, \textbf{analytics}, \textbf{cloud \& DevOps}, \textbf{transaction systems}, and \textbf{regulatory compliance} in financial services.}
+      \end{itemize}
+\end{itemize}
+% --- Skills ---
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Frontend \& Mobile}{: ReactJS, React Native, TypeScript, JavaScript (ES6+), Redux, HTML5, CSS3, Tailwind CSS} \\ \vspace{1pt}
+     \textbf{Backend Engineering}{: Node.js, Express.js, Python (Working Knowledge), RESTful API Design, JWT Authentication} \\ \vspace{1pt}
+     \textbf{Databases \& ORM}{: PostgreSQL, MySQL, Relational Database Schema Design, SQL Query Optimization, Prisma ORM} \\ \vspace{1pt}
+     \textbf{DevOps \& Monitoring}{: Docker, Linux, AWS (EC2, S3, Auto Scaling), CI/CD, Turborepo, Prometheus, Grafana} \\ \vspace{1pt}
+     \textbf{Core CS Foundations}{: Data Structures \& Algorithms, Object-Oriented Programming, Operating Systems, Computer Networks} \\ \vspace{1pt}
+     \textbf{Languages}{: C++, TypeScript, JavaScript, SQL, C, Java}
+    }}
+\end{itemize}
+% --- Projects ---
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \resumeProjectHeading
+      {\textbf{App Forge --- AI Mobile App Builder} $|$ \emph{Next.js, React Native, TypeScript, Prisma, AWS, Docker}}{ \href{https://github.com/gyana-rj/bolt-mobile-app}{GitHub} $|$ \href{https://bolt-mobile-app-frontend.vercel.app}{Live} \hspace{5pt}}
+      \begin{itemize}
+        \resumeItem{Engineered an AI-powered platform that transforms natural-language prompts into production-ready \textbf{React Native (Expo)} applications, streaming LLM-generated code into a live in-browser \textbf{WebContainer} preview.}
+        \resumeItem{Architected a scalable \textbf{Bun + Turborepo} monorepo of four microservices (Next.js frontend, Express API, generation worker, \textbf{AWS EC2 Auto Scaling} orchestrator) secured with \textbf{Clerk} auth and a \textbf{Prisma/PostgreSQL} data layer.}
+        \resumeItem{Containerized every service with \textbf{Docker}, automated multi-image \textbf{CI/CD} via \textbf{GitHub Actions}, and deployed across Vercel, Render, and Neon with a server-side \textbf{Expo tunnel} for instant on-device previews.}
+      \end{itemize}
+    \resumeProjectHeading
+      {\textbf{Sonexa --- Social Music Streaming Platform} $|$ \emph{Next.js, TypeScript, Prisma, PostgreSQL, Docker}}{ \href{https://github.com/gyana-rj/Sonexa}{GitHub} $|$ \href{https://sonexa-web.onrender.com/}{Live} \hspace{5pt}}
+      \begin{itemize}
+        \resumeItem{Built a full-stack music streaming app with instant track search, YouTube/Spotify playback, and a creator dashboard for live queues.}
+        \resumeItem{Implemented real-time listening rooms with synchronized playback, presence tracking, and community queue upvoting.}
+        \resumeItem{Architected a \textbf{pnpm + Turborepo} monorepo with a shared \textbf{Prisma} DB package and \textbf{GitHub Actions CI/CD} for Docker builds.}
+      \end{itemize}
+    \resumeProjectHeading
+      {\textbf{Collaborative Real-Time Whiteboard} $|$ \emph{React/Next.js, TypeScript, WebSockets, Prisma, Docker}}{ \href{https://github.com/gyana-rj/collaborative-whiteboard}{GitHub} $|$ \href{https://www.collaborativewhiteboard.tech/}{Live} \hspace{5pt}}
+      \begin{itemize}
+        \resumeItem{Engineered a touch-responsive collaborative canvas on the \textbf{Raw HTML5 Canvas API}, optimizing frame rendering across devices.}
+        \resumeItem{Architected a custom \textbf{WebSocket protocol} for asynchronous events, syncing state across clients with sub-50ms latency.}
+      \end{itemize}
+    \resumeProjectHeading
+      {\textbf{Freshly --- Cross-Platform Grocery \& Meal Planner} $|$ \emph{React Native, Expo, TypeScript, PostgreSQL}}{ \href{https://github.com/gyana-rj/freshly-expo}{GitHub} $|$ \href{https://devgyana-freshly.expo.app}{Live} \hspace{5pt}}
+      \begin{itemize}
+        \resumeItem{Built a cross-platform (iOS, Android, Web) grocery list and meal planner app with \textbf{Expo Router} file-based routing and typed API routes, backed by \textbf{Clerk} authentication and secure token storage.}
+        \resumeItem{Designed a \textbf{PostgreSQL} schema via \textbf{Drizzle ORM} on Neon's serverless driver, exposing REST endpoints for item CRUD, bulk-clear operations, and category/spending insights.}
+        \resumeItem{Implemented global state with \textbf{Zustand} and a NativeWind/Tailwind UI, and automated \textbf{EAS} builds/OTA updates and lint/typecheck \textbf{CI/CD} via GitHub Actions, with \textbf{Sentry} error tracking in production.}
+      \end{itemize}
+\end{itemize}
+% --- Awards & Certifications ---
+\section{Certifications \& Awards}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \resumeItem{\textbf{Full Stack Web Development (100xDevs):} Cohort-based training by Harkirat Singh on scalable systems and backend design.}
+    \resumeItem{\textbf{LeetCode 500 Days Badge / GitHub Traction:} 500+ day problem-solving streak and active open-source contributions.}
+    \resumeItem{\textbf{Advanced Problem Solving:} Certified by HackerRank for demonstrating strong proficiency in Data Structures and Algorithms.}
+    \resumeItem{\textbf{Generative AI Systems:} Certified by Microsoft via LinkedIn Learning.}
+\end{itemize}
+\end{document}
